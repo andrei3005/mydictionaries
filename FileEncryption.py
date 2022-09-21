@@ -1,30 +1,32 @@
-codes={'A':'%','a':'9','B':'@','b':'#','C':'1','c':'2','D':'3','d':'4','E':'5','e':'6','F':'7','f':'8','G':')'
-    ,'g':'(','H':'-','h':'*','I':'&','i':'^','J':'$','j':'#','K':'!','k':'@','L':'}','l':'{','M':'[','m':']','N':'?'
-    ,'n':'/','O':'>','o':'<','P':'.','p':',','Q':'=','q':'+','R':'_','r':'|','S':'\\','s':'$','T':'€',
-    't':'¢','U':'₹','u':'₱','V':'฿','v':'α','W':'β','w':'γ','X':'ε','x':'θ','Y':'κ','y':'μ','Z':'ξ',
-    'Z':'π'}
+codes = {'A':'%','a':'9','B':'@','b':'#','C':'8','c':'*','D':'1','d':'!','E':'2','e':'$','F':'3','f':'^','G':'4','g':'(',
+'H':'5','h':')','I':'6','i':'-','J':'7','j':'_','K':'+','k':'=','L':'{','l':'}','M':'[','m':']','N':'<','n':'>','O':',',
+'o':'.','P':'?','p':'/','Q':'|','q':':','R':';','r':'€','S':'π','s':'ξ','T':'μ','t':'θ','U':'ε','u':'γ','V':'β','v':'α',
+'W':'฿','w':'₱','X':'₹','x':'¢','Y':'~','y':'`','Z':'ᑓ','z':'ᑱ'}
 
-#fname to File_Name
 def main():
-    Filename=input("Enter Filename:")
-    with open(Filename) as f:
-      fw=open("encrypted.txt","w")
-      for line in f:
-        etxt=convert(line)
-        fw.write(etxt)
-      fw.close()
+    Filename = input("Enter Filename of data that needs to be encrypted:")
 
-def convert(s):
-    encrypted=""
-    for c in s:
-        e=codes.get(c,None)
-        if e is None:
+    with open(Filename) as read_file:
+      
+      outfile=open("encrypted.txt","w")
+
+      for text in read_file:
+        encrypted_text=convert(text)
+        outfile.write(encrypted_text)
+
+      outfile.close()
+
+def convert(info_security):
+    Encryption=""
+    for character in info_security:
+        encrypt=codes.get(character,None)
+        if encrypt is None:
             
-            encrypted+=c
+            Encryption+=character
         else:
             
-            encrypted+=e
-    return encrypted
+            Encryption+=encrypt
+    return Encryption
     
 main()
 
